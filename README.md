@@ -143,6 +143,10 @@ Monitor long-term business performance by identifying:
 git clone <repository-url> 
 cd sales-intelligence-dashboard
 ```
+### Install virtual environment
+```
+python -m venv .venv
+```
 ### Install dependencies
 ```
 pip install -r requirements.txt

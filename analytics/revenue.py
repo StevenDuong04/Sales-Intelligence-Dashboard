@@ -1,6 +1,6 @@
 # File: revenue.py
 # Author: Steven Duong
-# Date: 2026-07-13
+# Date: 2026-07-14
 # Description: This file contains revenue calculation functions.
 
 import pandas as pd
@@ -21,18 +21,6 @@ def revenue_growth_rate(df, previous_period_df):
     return growth_rate
 
 # def net_profit_margin(df): Need to have a column for expenses in order to calculate net profit margin. This function is not implemented yet.
-
-def monthly_revenue_trend(df):
-    df['order_date'] = pd.to_datetime(df['order_date'])
-    monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['revenue'].sum().reset_index()
-    monthly_revenue.columns = ['month', 'total_revenue']
-    return monthly_revenue
-
-def yearly_revenue_trend(df):
-    df['order_date'] = pd.to_datetime(df['order_date'])
-    yearly_revenue = df.groupby(df['order_date'].dt.to_period('Y'))['revenue'].sum().reset_index()
-    yearly_revenue.columns = ['year', 'total_revenue']
-    return yearly_revenue
 
 def average_revenue_per_user(df):
     total_revenue = calculate_total_revenue(df)

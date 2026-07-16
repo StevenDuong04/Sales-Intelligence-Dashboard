@@ -1,6 +1,6 @@
 # File: charts.py
 # Author: Steven Duong
-# Date: 2026-07-14
+# Date: 2026-07-15
 # Description: This file contains visualization functions to create different kinds of charts and plots.
 
 import pandas as pd

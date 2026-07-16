@@ -1,4 +1,4 @@
-# File: products.py
+# File: products_analytics.py
 # Author: Steven Duong
 # Date: 2026-07-14
 # Description: This file contains product-related functions.

@@ -1,11 +1,11 @@
-# File: revenue.py
+# File: revenue_analytics.py
 # Author: Steven Duong
 # Date: 2026-07-14
 # Description: This file contains revenue calculation functions.
 
 import pandas as pd
 import numpy as np
-from analytics.kpis import calculate_total_revenue, calculate_total_orders
+from analytics.kpis_analytics import calculate_total_revenue, calculate_total_orders
 
 def calculate_revenue(df):
     calculate_total_revenue(df)

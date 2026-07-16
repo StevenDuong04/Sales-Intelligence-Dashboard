@@ -1,4 +1,4 @@
-# File: trends.py
+# File: trends_analytics.py
 # Author: Steven Duong
 # Date: 2026-07-14
 # Description: This file contains trend analysis functions for products and customers.

@@ -1,4 +1,4 @@
-# File: customers.py
+# File: customers_analytics.py
 # Author: Steven Duong
 # Date: 2026-07-14
 # Description: This file contains customer analytics functions.

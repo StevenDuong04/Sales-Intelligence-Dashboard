@@ -1,6 +1,6 @@
 # File: loader.py
 # Author: Steven Duong
-# Date: 2026-07-08
+# Date: 2026-07-15
 # Description: This file contains the loader to load data from CSV or excel files.
 
 import pandas as pd
@@ -15,7 +15,7 @@ def load_excel(file):
 
 
 def load_data(file):
-    extension = file.split(".")[-1]
+    extension = str(file.name).split('.')[-1].lower()
 
     if extension == "csv":
         return load_csv(file)
@@ -24,4 +24,4 @@ def load_data(file):
         return load_excel(file)
     
     else:
-        ValueError("Unsupported file type")
+        raise ValueError("Unsupported file type")

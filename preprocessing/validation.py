@@ -1,7 +1,8 @@
 # File: validation.py
 # Author: Steven Duong
-# Date: 2026-07-13
+# Date: 2026-07-15
 # Description: This file constains preprocessing functions to validate data.
+
 import pandas as pd
 import numpy as np
 
@@ -14,21 +15,44 @@ def check_required_columns(df):
 
 def data_type_validation(df):
     expected_types = {
-        "transaction_id": np.integer,
-        "order_date": np.datetime64,
-        "customer_id": np.integer,
-        "product_name": str,
-        "category": str,
-        "quantity": np.integer,
-        "unit_price": np.float64,
-        "revenue": np.float64
+        "transaction_id": "integer",
+        "order_date": "datetime",
+        "customer_id": "integer",
+        "product_name": "string",
+        "category": "string",
+        "quantity": "integer",
+        "unit_price": "float",
+        "revenue": "float"
     }
 
     for column, expected_type in expected_types.items():
-        if column in df.columns:
-            if not np.issubdtype(df[column].dtype, expected_type):
-                raise TypeError(f"Column '{column}' has incorrect data type. Expected {expected_type}, got {df[column].dtype}.")
-            
+
+        if column not in df.columns:
+            continue
+
+        dtype = df[column].dtype
+
+        if expected_type == "integer":
+            valid = pd.api.types.is_integer_dtype(dtype)
+
+        elif expected_type == "float":
+            valid = pd.api.types.is_float_dtype(dtype)
+
+        elif expected_type == "datetime":
+            valid = pd.api.types.is_datetime64_any_dtype(dtype)
+
+        elif expected_type == "string":
+            valid = pd.api.types.is_string_dtype(dtype)
+
+        else:
+            valid = True
+
+        if not valid:
+            raise TypeError(
+                f"Column '{column}' has incorrect data type. "
+                f"Expected {expected_type}, got {dtype}."
+            )
+        
 def full_validation(df):
     try:
         check_required_columns(df)

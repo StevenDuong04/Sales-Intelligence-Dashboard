@@ -30,7 +30,12 @@ else:
     with col3:
         st.metric(label="Repeat Rate", value=f"{customers.customer_repeat_rate(df):,.2f}%")
     
-    # TODO: Customer Distribution (With Pie/Bar chart)
+    # TODO: Customer Distribution (With Bar chart)
+    # Customer distribution by purhcase frequency, revenue contribution, number of orders with tab to switch between each metric
+    st.subheader("Customer Distribution")
+    distribution_tabs = st.tabs(["Purchase Frequency", "Revenue Contribution", "Number of Orders"])
+    
+    
     # TODO: Customer Segmentation (With Pie/Bar chart)
     # TODO: Customer Lifetime Value (With Line chart)
     # TODO: Customer Order Table at bottom with recent orders

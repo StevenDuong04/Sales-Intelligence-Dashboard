@@ -1,6 +1,6 @@
 # File: trends_analytics.py
 # Author: Steven Duong
-# Date: 2026-07-14
+# Date: 2026-07-16
 # Description: This file contains trend analysis functions for products and customers.
 
 import pandas as pd
@@ -46,6 +46,7 @@ def monthly_revenue_trend(df):
     df['order_date'] = pd.to_datetime(df['order_date'])
     monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['revenue'].sum().reset_index()
     monthly_revenue.columns = ['month', 'total_revenue']
+    monthly_revenue['month'] = monthly_revenue['month'].astype(str)
     return monthly_revenue
 
 def yearly_revenue_trend(df):

@@ -1,16 +1,17 @@
 # File: customers_analytics.py
 # Author: Steven Duong
-# Date: 2026-07-14
+# Date: 2026-07-16
 # Description: This file contains customer analytics functions.
 
 import pandas as pd
 import numpy as np
 
-def top_customers_by_revenue(df, top_n=10):
+def top_customers_by_revenue(df, top_n):
     if 'customer_id' not in df.columns or 'revenue' not in df.columns:
         raise ValueError("DataFrame must contain 'customer_id' and 'revenue' columns.")
     
     top_customers = df.groupby('customer_id')['revenue'].sum().nlargest(top_n).reset_index()
+    top_customers.columns = ['Customer ID', 'Total Revenue']
     return top_customers
 
 def customer_most_bought_product(df, top_n=10):
@@ -34,3 +35,12 @@ def customer_average_order_value(df):
     average_order_value = df.groupby('customer_id')['revenue'].mean().reset_index()
     average_order_value.rename(columns={'revenue': 'average_order_value'}, inplace=True)
     return average_order_value
+
+def customer_repeat_rate(df):
+    if 'customer_id' not in df.columns:
+        raise ValueError("DataFrame must contain 'customer_id' column.")
+    
+    total_customers = df['customer_id'].nunique()
+    repeat_customers = df[df.duplicated('customer_id', keep=False)]['customer_id'].nunique()
+    repeat_rate = (repeat_customers / total_customers) * 100
+    return repeat_rate

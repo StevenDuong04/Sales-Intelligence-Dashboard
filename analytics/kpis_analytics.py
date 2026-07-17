@@ -1,6 +1,6 @@
 # File: kpis_analytics.py
 # Author: Steven Duong
-# Date: 2026-07-13
+# Date: 2026-07-16
 # Description: This file contains KPI calculation functions.
 
 import pandas as pd
@@ -19,7 +19,11 @@ def calculate_total_orders(df):
     return total_orders
 
 def calculate_average_order_value(df):
-    avg_order = calculate_average_order_value(df) / calculate_total_orders(df)
+    total_revenue = df['revenue'].sum()
+    total_orders = df['transaction_id'].count()
+    if total_orders == 0:
+        return 0
+    avg_order = total_revenue / total_orders
     return avg_order
 
 def calculate_customer_count(df):

@@ -1,6 +1,6 @@
 # File: products_analytics.py
 # Author: Steven Duong
-# Date: 2026-07-14
+# Date: 2026-07-16
 # Description: This file contains product-related functions.
 
 import pandas as pd
@@ -10,8 +10,8 @@ def top_performing_product(df):
     if 'product_name' not in df.columns or 'quantity' not in df.columns:
         raise ValueError("DataFrame must contain 'product_name' and 'quantity' columns.")
     
-    product_sales = df.groupby('product_name')['quantity'].sum()
-    top_product = product_sales.idxmax()
+    top_product = df.groupby('product_name')['quantity'].sum().nlargest(5).reset_index()
+    top_product.columns = ['Products', ' Total Quantity Sold']
     return top_product
 
 def product_performance_summary(df):

@@ -1,6 +1,6 @@
 # File: customers.py
 # Author: Steven Duong
-# Date: 2026-07-16
+# Date: 2026-07-17
 # Description: This file contains the layout for the customer page.
 
 import streamlit as st
@@ -15,7 +15,7 @@ import visualization.charts as charts
 
 st.header("Customer Analysis", text_alignment="left")
 
-if "dataset" not in st.session_state:
+if "dataset" not in st.session_state or st.session_state["dataset"] is None: # Make sure to check if dataset is None as well
     st.warning("Please upload a dataset first in Overview")
 
 else:
@@ -29,5 +29,10 @@ else:
         st.metric(label="Average Spending", value=f"${kpis.calculate_average_order_value(df):,.2f}")
     with col3:
         st.metric(label="Repeat Rate", value=f"{customers.customer_repeat_rate(df):,.2f}%")
+    
+    # TODO: Customer Distribution (With Pie/Bar chart)
+    # TODO: Customer Segmentation (With Pie/Bar chart)
+    # TODO: Customer Lifetime Value (With Line chart)
+    # TODO: Customer Order Table at bottom with recent orders
 
     

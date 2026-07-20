@@ -1,10 +1,9 @@
 # File: overview.py
 # Author: Steven Duong
-# Date: 2026-07-18
+# Date: 2026-07-20
 # Description: This file contains the layout for the overview page.
 
 import streamlit as st
-import pandas as pd
 
 import preprocessing.loader as loader
 import preprocessing.cleaning as cleaning
@@ -17,9 +16,9 @@ import analytics.customers_analytics as customers
 
 import visualization.charts as charts
 
-st.set_page_config(
-    page_title="Sales Intelligence Dashboard", page_icon=":bar_chart:", layout="wide"
-)
+import utils.helpers as helps
+
+helps.init_page("Sales Intelligence Dashboard")
 
 st.header("Quick Business Summary", text_alignment="left")
 

@@ -1,6 +1,6 @@
 # File: trends.py
 # Author: Steven Duong
-# Date: 2026-07-18
+# Date: 2026-07-20
 # Description: This file contains the layout for the trends page.
 
 import streamlit as st
@@ -9,6 +9,10 @@ import pandas as pd
 import analytics.trends_analytics as trends
 
 import visualization.charts as charts
+
+import utils.helpers as helps
+
+helps.init_page("Sales Intelligence Dashboard")
 
 st.header("Trend Analysis", text_alignment="left")
 

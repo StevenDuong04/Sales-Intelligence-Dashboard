@@ -1,18 +1,19 @@
 # File: revenue.py
 # Author: Steven Duong
-# Date: 2026-07-18
+# Date: 2026-07-20
 # Description: This file contains the layout for the revenue page.
 
 import streamlit as st
-import pandas as pd
 
 import analytics.kpis_analytics as kpis
 import analytics.trends_analytics as trends
-import analytics.products_analytics as products
-import analytics.customers_analytics as customers
 import analytics.revenue_analytics as revenues
 
 import visualization.charts as charts
+
+import utils.helpers as helps
+
+helps.init_page("Sales Intelligence Dashboard")
 
 st.header("Revenue Analysis", text_alignment="left")
 

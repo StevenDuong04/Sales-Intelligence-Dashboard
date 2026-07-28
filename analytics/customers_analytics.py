@@ -8,6 +8,13 @@ import numpy as np
 
 
 def top_customers_by_revenue(df, top_n):
+    """
+    Returns the top customers ranked by total revenue generated.
+
+    Groups transactions by customer, calculates total revenue per customer,
+    and returns the highest-revenue customers up to the specified limit.
+    """
+
     if "customer_id" not in df.columns or "revenue" not in df.columns:
         raise ValueError("DataFrame must contain 'customer_id' and 'revenue' columns.")
 
@@ -19,6 +26,13 @@ def top_customers_by_revenue(df, top_n):
 
 
 def customer_average_order_value(df):
+    """
+    Calculates the average order value for each customer.
+
+    Uses the mean revenue per transaction to determine how much
+    each customer spends on average per order.
+    """
+
     if "customer_id" not in df.columns or "revenue" not in df.columns:
         raise ValueError("DataFrame must contain 'customer_id' and 'revenue' columns.")
 
@@ -28,6 +42,13 @@ def customer_average_order_value(df):
 
 
 def customer_repeat_rate(df):
+    """
+    Calculates the percentage of customers who have made multiple purchases.
+
+    Identifies customers with more than one transaction and divides them
+    by the total number of unique customers.
+    """
+
     if "customer_id" not in df.columns:
         raise ValueError("DataFrame must contain 'customer_id' column.")
 
@@ -40,6 +61,13 @@ def customer_repeat_rate(df):
 
 
 def top_customer_purchase_frequency(df):
+    """
+    Returns customers with the highest number of purchases.
+
+    Counts the number of transactions per customer and returns
+    the customers with the most frequent purchases.
+    """
+
     if "customer_id" not in df.columns:
         raise ValueError("DataFrame must contain 'customer_id' column.")
 
@@ -50,6 +78,13 @@ def top_customer_purchase_frequency(df):
 
 
 def customer_most_recent_orders(df, top_n):
+    """
+    Returns the most recent customer orders.
+
+    Sorts transactions by order date and returns the latest orders
+    along with relevant customer and purchase details.
+    """
+
     if (
         "customer_id" not in df.columns
         or "transaction_id" not in df.columns

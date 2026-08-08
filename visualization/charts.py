@@ -1,11 +1,12 @@
 # File: charts.py
 # Author: Steven Duong
-# Date: 2026-07-18
+# Date: 2026-08-07
 # Description: This file contains visualization functions to create different kinds of charts and plots.
 
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 def create_line_chart(data, x, y, title):
@@ -89,6 +90,43 @@ def create_pie_chart(data, column, values, title):
 
     fig.update_layout(
         template="plotly_white",
+    )
+
+    return fig
+
+
+# Forecasting plot
+def create_forecast_chart(historical, forecast, title):
+    """
+    Creates a line chart showing historical revenue and forecasted revenue.
+    """
+
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Scatter(
+            x=historical.index,
+            y=historical.values,
+            mode="lines",
+            name="Historical Revenue",
+        )
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=forecast["date"],
+            y=forecast["forecast"],
+            mode="lines",
+            name="Forecast",
+            line=dict(dash="dash"),
+        )
+    )
+
+    fig.update_layout(
+        title=title,
+        xaxis_title="Date",
+        yaxis_title="Revenue",
+        hovermode="x unified",
     )
 
     return fig
